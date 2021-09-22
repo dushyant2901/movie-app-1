@@ -7,10 +7,10 @@ function Movie() {
  const [movieInfo, setmovieInfo] = useState(null)
 const [title, settitle] = useState('the avengers')
 useEffect(() => {
+    // eslint-disable-next-line
    getMovieInfo()
-
-}, [])  
-
+ // eslint-disable-next-line
+},[])  
 function getMovieInfo() {
     let url = `https://omdbapi.com/?t=${title}&apikey=784a9d41`
 
@@ -18,6 +18,7 @@ function getMovieInfo() {
     .then(response=>response.json())
     .then(data=>setmovieInfo(data))
    
+    
   
 }
 
@@ -61,7 +62,7 @@ return (
                            movieInfo?.Ratings.map((rating,index)=>(
 
 
-                            <div>
+                            <div key={index}>
                                <strong> {rating.Source}</strong>
                                <h3> {rating.Value}</h3>
                             </div>
